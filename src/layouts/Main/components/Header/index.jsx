@@ -1,5 +1,6 @@
 import React from 'react';
-import { AccountInfo } from '@mybit/ui';
+// import { AccountInfo } from '@mybit/ui';
+import AccountInfo from '@bit/mybit.ui.kit.account-info';
 import StyledHeader from './styledHeader';
 import { myBitLogoWhite } from '../../../../modules/Images';
 import BlockchainContext from '../../../../modules/Blockchain/containers/BlockchainInfoContext';
@@ -17,7 +18,7 @@ const Header = (props) => (
                 <AccountInfo 
                     myBitBalance={user.myBitBalance} 
                     ethBalance={user.ethBalance} 
-                    userName={user.userName}
+                    userName={user.userName ? user.userName.slice(0, 5) + '...' + user.userName.slice(-5) : null}
                 />
                 </StyledHeader>
             </header>

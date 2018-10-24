@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import { Button, Input } from '@mybit/ui'
+import Input from '@bit/mybit.ui.kit.input';
+import ConnectionStatus from '@bit/mybit.ui.kit.connection-status';
+import Button from '@bit/mybit.ui.kit.button';
 import styled from 'styled-components';
 import { MainLayout } from '../../layouts/index.js';
 import { secureGraphic } from '../../modules/Images';
-
-
+import BlockchainContext from '../../modules/Blockchain/containers/BlockchainInfoContext';
+ 
 const StyledFormContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -41,44 +43,39 @@ class HomeView extends Component {
     }
     render() {
         return (
-            <MainLayout>
-                <StyledFormContainer>
-                    <form>
-                        <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
-                        <br/>
-                        Your ETH address
-                        <Input 
-                            tooltipTitle="Your address" 
-                            onChange={this.handleAddressChange} 
-                            hasTooltip={true} 
-                            value={this.state.userAddress}
-                        />
-                        <br/>
-                        Amount ETH to withdraw
-                        <Input 
-                            type="number"
-                            min="0"
-                            tooltipTitle="How many tokens you'd like to withdraw" 
-                            onChange={this.handleAmountChange} 
-                            hasTooltip={true} 
-                            value={this.state.amount}
-                        />
-                        <br/>
-                        <Button styling={{
-                            color: '#ffffff',
-                            colorHover: '#ffffff',
-                            colorActive: '#ffffff',
-                            backgroundColor: 'blue',
-                            backgroundColorHover: 'blue',
-                            backgroundColorActive: 'blue',
-                            borderColor: 'blue',
-                            borderColorHover: 'blue',
-                            borderColorActive: 'blue',
-                        }}>Withdraw</Button>
+            <BlockchainContext.Consumer>
+                {({network}) => (
+                    <MainLayout>
+                        <StyledFormContainer>
+                            <form>
+                                <ConnectionStatus network={network} />
+                                <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
+                                <br/>
+                                Your ETH address
+                                <Input 
+                                    tooltipTitle="Your address" 
+                                    onChange={this.handleAddressChange} 
+                                    hasTooltip={true} 
+                                    value={this.state.userAddress}
+                                />
+                                <br/>
+                                Amount ETH to withdraw
+                                <Input 
+                                    type="number"
+                                    min="0"
+                                    tooltipTitle="How many tokens you'd like to withdraw" 
+                                    onChange={this.handleAmountChange} 
+                                    hasTooltip={true} 
+                                    value={this.state.amount}
+                                />
+                                <br/>
+                                <Button type="solid">Withdraw</Button>
 
-                    </form>
-                </StyledFormContainer>
-            </MainLayout>
+                            </form>
+                        </StyledFormContainer>
+                    </MainLayout>
+                )}
+            </ BlockchainContext.Consumer>
         )
     }
 }

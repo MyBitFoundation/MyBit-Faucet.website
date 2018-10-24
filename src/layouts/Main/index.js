@@ -1,7 +1,7 @@
 import React from 'react';
-import { Menu } from '@mybit/ui';
+// import { Menu } from '@mybit/ui';
+import Menu from '@bit/mybit.ui.kit.menu';
 import { Header, Footer, Background } from './components';
-
 
 const MainLayout = (props) => {
     return (
@@ -9,7 +9,7 @@ const MainLayout = (props) => {
             <Header>
                 <Menu
                     onClick={() => {}}
-                    selectedKeys={['Developer']}
+                    selectedKeys={['Request ETH']}
                     mode="horizontal"
                     items={[
                         {
@@ -26,15 +26,7 @@ const MainLayout = (props) => {
                             target: '_top',
                         }
                     ]}
-                    styling={{
-                        backgroundColor: 'transparent',
-                        color: '#ffffff',
-                        itemHoverColor: 'blue',
-                        itemSelectedColor: 'blue',
-                        borderBottom: `2px solid ${'blue'}`,
-                        backgroundColorItem: 'lightBlue',
-                    }}
-                    className="navigation--is-desktop"
+                    // className="navigation--is-desktop"
                 />
             </Header>
             <main id="main-content">

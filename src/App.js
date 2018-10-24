@@ -1,5 +1,4 @@
 import React, { Component, Fragment } from 'react';
-import { ConnectionStatus, Button } from '@mybit/ui';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import { Home } from './views';

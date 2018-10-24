@@ -193,9 +193,6 @@ class BlockchainInfo extends React.Component {
   render() {
     return (
       <BlockchainInfoContext.Provider value={this.state}>
-        <pre>
-            {JSON.stringify(this.state, null, ' ')}
-        </pre>
         {this.props.children}
       </BlockchainInfoContext.Provider>
     );
