@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { MainLayout } from '../../layouts/index.js';
 import { secureGraphic } from '../../modules/Images';
 import BlockchainContext from '../../modules/Blockchain/containers/BlockchainInfoContext';
- 
+import {address} from '../../constants/contracts/ropsten/MyBitFaucet';
 const StyledFormContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -29,7 +29,7 @@ class HomeView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            userAddress: '',
+            userAddress: null,
             amount: 0,
         }
     }
@@ -44,11 +44,11 @@ class HomeView extends Component {
     render() {
         return (
             <BlockchainContext.Consumer>
-                {({network}) => (
+                {(blockchain) => (
                     <MainLayout>
                         <StyledFormContainer>
                             <form>
-                                <ConnectionStatus network={network} />
+                                <ConnectionStatus network={blockchain.network} />
                                 <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
                                 <br/>
                                 Your ETH address
@@ -56,7 +56,7 @@ class HomeView extends Component {
                                     tooltipTitle="Your address" 
                                     onChange={this.handleAddressChange} 
                                     hasTooltip={true} 
-                                    value={this.state.userAddress}
+                                    value={this.state.userAddress || blockchain.user.userName}
                                 />
                                 <br/>
                                 Amount ETH to withdraw
@@ -69,7 +69,15 @@ class HomeView extends Component {
                                     value={this.state.amount}
                                 />
                                 <br/>
-                                <Button type="solid">Withdraw</Button>
+                                {address}
+                                <Button type="solid" onClick={(e) => {
+                                    console.log(blockchain);
+                                    blockchain.requestApproval().then((err,res) => {
+                                        console.log(res)
+                                       // blockchain.withdraw(address, blockchain.user, blockchain.network)
+                                    }
+                                    )
+                                }}>Withdraw</Button>
 
                             </form>
                         </StyledFormContainer>

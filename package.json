@@ -8,6 +8,7 @@
     "@bit/mybit.ui.kit.connection-status": "^0.1.5",
     "@bit/mybit.ui.kit.input": "^0.1.5",
     "@bit/mybit.ui.kit.menu": "^0.1.7",
+    "antd": "^3.10.2",
     "axios": "^0.18.0",
     "dayjs": "^1.7.7",
     "react": "^16.5.2",

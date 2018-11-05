@@ -22,7 +22,7 @@ const MainLayout = (props) => {
                             target: '_top',
                         }, {
                             name: 'Transactions',
-                            linkTo: 'https://mybit.io/applications',
+                            linkTo: '/transactions',
                             target: '_top',
                         }
                     ]}
