@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import Input from '@bit/mybit.ui.kit.input';
+import dayjs from 'dayjs'
+import { Table, Modal } from 'antd';
+import 'antd/lib/table/style/css'
+import 'antd/lib/modal/style/css'
 import ConnectionStatus from '@bit/mybit.ui.kit.connection-status';
 import Button from '@bit/mybit.ui.kit.button';
 import styled from 'styled-components';
 import { MainLayout } from '../../layouts/index.js';
 import { secureGraphic } from '../../modules/Images';
 import BlockchainContext from '../../modules/Blockchain/containers/BlockchainInfoContext';
-import {address} from '../../constants/contracts/ropsten/MyBitFaucet';
 const StyledFormContainer = styled.div`
     display: flex;
     justify-content: center;
@@ -29,8 +31,14 @@ class HomeView extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            showMetamaskModal: true,
             userAddress: null,
             amount: 0,
+        }
+    }
+    componentDidMount() {
+        if(window.ethereum) {
+            this.setState({showMetamaskModal: false})
         }
     }
     handleAddressChange = (e) => {
@@ -44,45 +52,65 @@ class HomeView extends Component {
     render() {
         return (
             <BlockchainContext.Consumer>
-                {(blockchain) => (
+                {(blockchain) => {
+
+                    return (
                     <MainLayout>
+                        <Modal
+                            title="You need the MetaMask extension to use the faucet."
+                            closable={false}
+                            visible={this.state.showMetamaskModal}
+                            onOk={() => {}}
+                            onCancel={() => {}}
+                            footer={null}
+                            >
+                            <a href="http://metamask.io" target="_blank">
+                                <img style={{maxWidth: '100%'}} src="https://raw.githubusercontent.com/MetaMask/faq/master/images/download-metamask.png" alt="download MetaMask"/>
+                            </a>
+                        </Modal>
                         <StyledFormContainer>
                             <form>
                                 <ConnectionStatus network={blockchain.network} />
                                 <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
+                                
                                 <br/>
-                                Your ETH address
-                                <Input 
-                                    tooltipTitle="Your address" 
-                                    onChange={this.handleAddressChange} 
-                                    hasTooltip={true} 
-                                    value={this.state.userAddress || blockchain.user.userName}
-                                />
-                                <br/>
-                                Amount ETH to withdraw
-                                <Input 
-                                    type="number"
-                                    min="0"
-                                    tooltipTitle="How many tokens you'd like to withdraw" 
-                                    onChange={this.handleAmountChange} 
-                                    hasTooltip={true} 
-                                    value={this.state.amount}
-                                />
-                                <br/>
-                                {address}
-                                <Button type="solid" onClick={(e) => {
-                                    console.log(blockchain);
-                                    blockchain.requestApproval().then((err,res) => {
-                                        console.log(res)
-                                       // blockchain.withdraw(address, blockchain.user, blockchain.network)
-                                    }
-                                    )
-                                }}>Withdraw</Button>
+                                {blockchain.user.myBitBalance < 10000 && 
+                                    <div style={{textAlign: 'center'}}>
+                                        <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${10000 - blockchain.user.myBitBalance} MYB`}</Button>
+                                        <br/>
+                                        If you have less than 10 000 MYB tokens, the faucet will send you enough to reach it.
+                                    </div>
+                                }
+                                {blockchain.user.myBitBalance >= 10000 && 
+                                    <div style={{textAlign: 'center'}}>
+                                        You need to have less than 10 000 MYB tokens in order to use the faucet.
+                                    </div>
+                                }
+                                <Table 
+                                    style={{marginLeft: "-60px", marginRight: "-60px"}} 
+                                    loading={blockchain.loading.transactionHistory} 
+                                    pagination={false}
+                                    dataSource={blockchain.transactions} columns={[{
+                                        title: 'Timestamp',
+                                        dataIndex: 'timestamp',
+                                        key: 'name',
+                                        render: timestamp => dayjs(timestamp * 1000).format('YYYY-MM-DD HH:mm')
+                                        }, {
+                                        title: 'Amount',
+                                        dataIndex: 'amount',
+                                        key: 'age',
+                                        render: amount => amount + ' MYB'
+                                        }, {
+                                        title: 'Hash',
+                                        dataIndex: 'transactionHash',
+                                        key: 'address',
+                                        render: (hash) => hash.slice(0, 5) + '...' + hash.slice(-5)
+                                }] } />
 
                             </form>
                         </StyledFormContainer>
                     </MainLayout>
-                )}
+                )}}
             </ BlockchainContext.Consumer>
         )
     }

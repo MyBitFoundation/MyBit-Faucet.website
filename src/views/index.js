@@ -1,2 +1,1 @@
 export { default as Home } from './Home'
-export { default as Transactions } from './Transactions'

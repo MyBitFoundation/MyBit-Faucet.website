@@ -1,7 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import { Home, Transactions } from './views';
+import { Home } from './views';
 
 import BlockchainInfo from './modules/Blockchain/containers/BlockchainInfo';
 import BlockchainContext from './modules/Blockchain/containers/BlockchainInfoContext';
@@ -19,7 +19,6 @@ class App extends Component {
         <Router>
           <Switch>
             <Route path="/" exact={true} component={Home} />
-            <Route path="/transactions" exact={true} component={Transactions} />
           </Switch>
         </Router>
       </BlockchainInfo>

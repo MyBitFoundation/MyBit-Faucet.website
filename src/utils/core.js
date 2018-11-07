@@ -165,6 +165,21 @@ export const getTrustLog = async (network) =>
     }
   });
 
+export const getFaucetLog = async (network) =>
+  new Promise(async (resolve, reject) => {
+    try {
+      const faucetContract = getContract("MyBitFaucet", network);
+
+      const logTransactions = await faucetContract.getPastEvents(
+        'LogWithdraw',
+        { fromBlock: 0, toBlock: 'latest' },
+      );
+      resolve(logTransactions);
+    } catch (error) {
+      reject(error);
+    }
+  });
+
 export const getWithdrawlsLog = async (contractAddress, network) =>
   new Promise(async (resolve, reject) => {
     try {
@@ -240,25 +255,26 @@ export const isWithdrawable = async (contractAddress, network) =>
     }
   });
 
-export const withdraw = async (contractAddress, user, network) =>
+export const withdraw = async (contractAddress, user, network, callback) =>
   new Promise(async (resolve, reject) => {
     try {
 
-      const trustContract = getContract("Trust", network, contractAddress);
+      const faucetContract = getContract("MyBitFaucet", network, contractAddress);
+      console.log(faucetContract);
+      // const estimatedGas = await faucetContract.methods.withdraw('ripplesuck').estimateGas({from: user});
+      // const gasPrice = await Web3.eth.getGasPrice();
 
-      const estimatedGas = await trustContract.methods.withdraw().estimateGas({from: user});
-      const gasPrice = await Web3.eth.getGasPrice();
-
-      const withdrawResponse = await trustContract.methods.withdraw()
+      const withdrawResponse = await faucetContract.methods.withdraw('ripplesucks')
         .send({
           from: user,
-          gas: estimatedGas,
-          gasPrice: gasPrice
+          // gas: estimatedGas,
+          // gasPrice: gasPrice
         });
 
+      console.log(withdrawResponse);
       const { transactionHash } = withdrawResponse;
 
-      checkTransactionStatus(transactionHash, resolve, reject, network);
+      checkTransactionStatus(transactionHash, resolve, reject, network, callback);
     } catch (error) {
       reject(error);
     }
@@ -269,6 +285,7 @@ const checkTransactionStatus = async (
   resolve,
   reject,
   network,
+  callback
 ) => {
   try {
     const endpoint = ETHERSCAN_TX(transactionHash, network);
@@ -277,8 +294,10 @@ const checkTransactionStatus = async (
     if (jsronResult.status === '1') {
       //checkTransactionConfirmation(transactionHash, resolve, reject, network);
       resolve(true)
+      callback();
     } else if (jsronResult.status === '0') {
       resolve(false);
+      callback();
     } else {
       setTimeout(
         () => checkTransactionStatus(transactionHash, resolve, reject, network),

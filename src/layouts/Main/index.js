@@ -7,7 +7,7 @@ const MainLayout = (props) => {
     return (
         <Background>
             <Header>
-                <Menu
+                {/* <Menu
                     onClick={() => {}}
                     selectedKeys={['Request ETH']}
                     mode="horizontal"
@@ -27,7 +27,7 @@ const MainLayout = (props) => {
                         }
                     ]}
                     // className="navigation--is-desktop"
-                />
+                /> */}
             </Header>
             <main id="main-content">
                 {props.children}
