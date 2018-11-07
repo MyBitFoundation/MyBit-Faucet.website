@@ -86,26 +86,6 @@ class HomeView extends Component {
                                         You need to have less than 10 000 MYB tokens in order to use the faucet.
                                     </div>
                                 }
-                                <Table 
-                                    style={{marginLeft: "-60px", marginRight: "-60px"}} 
-                                    loading={blockchain.loading.transactionHistory} 
-                                    pagination={false}
-                                    dataSource={blockchain.transactions} columns={[{
-                                        title: 'Timestamp',
-                                        dataIndex: 'timestamp',
-                                        key: 'name',
-                                        render: timestamp => dayjs(timestamp * 1000).format('YYYY-MM-DD HH:mm')
-                                        }, {
-                                        title: 'Amount',
-                                        dataIndex: 'amount',
-                                        key: 'age',
-                                        render: amount => amount + ' MYB'
-                                        }, {
-                                        title: 'Hash',
-                                        dataIndex: 'transactionHash',
-                                        key: 'address',
-                                        render: (hash) => hash.slice(0, 5) + '...' + hash.slice(-5)
-                                }] } />
 
                             </form>
                         </StyledFormContainer>
