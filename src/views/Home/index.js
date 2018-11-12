@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import dayjs from 'dayjs'
-import { Table, Modal } from 'antd';
-import 'antd/lib/table/style/css'
+import { message, Modal, Spin } from 'antd';
+import 'antd/lib/message/style/css'
 import 'antd/lib/modal/style/css'
 import ConnectionStatus from '@bit/mybit.ui.kit.connection-status';
 import Button from '@bit/mybit.ui.kit.button';
@@ -27,7 +27,18 @@ const StyledFormContainer = styled.div`
     }
 `
 
+class HomeViewContainer extends Component {
+    render() {
+        return (
+            <BlockchainContext.Consumer>
+                {blockchain => <HomeView blockchain={blockchain}/>}
+            </ BlockchainContext.Consumer>
+        )
+    }
+}
+
 class HomeView extends Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -49,51 +60,73 @@ class HomeView extends Component {
     handleAmountChange = (e) => {
         this.setState({ amount: e })
     }
-    render() {
-        return (
-            <BlockchainContext.Consumer>
-                {(blockchain) => {
+    componentDidUpdate() {
+        const { blockchain } = this.props;
+        if(blockchain.showSuccess === true) {
+            blockchain.dismissMessages(() => {
+                message.success('Your transaction was successfull.')
+            })
+        }
+        if(blockchain.showFail === true) {
+            blockchain.dismissMessages(() => {
+                message.error('Your transaction failed.')
+            })
+        }
+    }
 
-                    return (
-                    <MainLayout>
-                        <Modal
-                            title="You need the MetaMask extension to use the faucet."
-                            closable={false}
-                            visible={this.state.showMetamaskModal}
-                            onOk={() => {}}
-                            onCancel={() => {}}
-                            footer={null}
-                            >
-                            <a href="http://metamask.io" target="_blank">
-                                <img style={{maxWidth: '100%'}} src="https://raw.githubusercontent.com/MetaMask/faq/master/images/download-metamask.png" alt="download MetaMask"/>
-                            </a>
-                        </Modal>
-                        <StyledFormContainer>
-                            <form>
-                                <ConnectionStatus network={blockchain.network} />
-                                <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
-                                
-                                <br/>
-                                {blockchain.user.myBitBalance < 10000 && 
-                                    <div style={{textAlign: 'center'}}>
+    render() {
+        const { blockchain} = this.props
+        const isLoading = Object.keys(blockchain.loading).filter(key => blockchain.loading[key]).length > 0;
+        return (
+            <MainLayout>
+                <Modal
+                    title="You need the MetaMask extension to use the faucet."
+                    closable={false}
+                    visible={this.state.showMetamaskModal}
+                    onOk={() => {}}
+                    onCancel={() => {}}
+                    footer={null}
+                    >
+                    <a href="http://metamask.io" target="_blank">
+                        <img style={{maxWidth: '100%'}} src="https://raw.githubusercontent.com/MetaMask/faq/master/images/download-metamask.png" alt="download MetaMask"/>
+                    </a>
+                </Modal>
+                <StyledFormContainer>
+                    <form>
+                        <ConnectionStatus network={blockchain.network} />
+                        <img style={{ marginBottom: '60px'}} src={secureGraphic} alt="Secure Connection" />
+                        
+                        <br/>
+                        {
+                            isLoading && 
+                            <div style={{textAlign: 'center'}}>
+                                <Spin/><br/>
+                                {blockchain.loading.transaction === true && 'Your transaction is being processed.'}
+                            </div>
+                        }
+                        {
+                            !isLoading &&
+                            <div style={{textAlign: 'center'}}>
+                                {blockchain.user.myBitBalance < 10000 &&
+                                    <React.Fragment>
                                         <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${10000 - blockchain.user.myBitBalance} MYB`}</Button>
                                         <br/>
                                         If you have less than 10 000 MYB tokens, the faucet will send you enough to reach it.
-                                    </div>
+                                    </React.Fragment>
                                 }
                                 {blockchain.user.myBitBalance >= 10000 && 
-                                    <div style={{textAlign: 'center'}}>
-                                        You need to have less than 10 000 MYB tokens in order to use the faucet.
-                                    </div>
+                                        <React.Fragment>
+                                            You need to have less than 10 000 MYB tokens in order to use the faucet.
+                                        </React.Fragment>
                                 }
+                            </div>
+                        }
 
-                            </form>
-                        </StyledFormContainer>
-                    </MainLayout>
-                )}}
-            </ BlockchainContext.Consumer>
+                    </form>
+                </StyledFormContainer>
+            </MainLayout>
         )
     }
 }
 
-export default HomeView
+export default HomeViewContainer

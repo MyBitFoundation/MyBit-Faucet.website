@@ -18,7 +18,6 @@ class BlockchainInfo extends React.Component {
     this.state = {
       loading: {
         user: true,
-        transactionHistory: true,
         network: true,
       },
       transactions: [],
@@ -30,6 +29,7 @@ class BlockchainInfo extends React.Component {
       createTrust: this.createTrust,
       currentBlock: 0,
       getTransactions: this.getTransactions,
+      dismissMessages: this.dismissMessages,
       withdraw: this.withdraw,
       //can be ropsten or main - else unknown
       network: ""
@@ -38,20 +38,31 @@ class BlockchainInfo extends React.Component {
 
   async componentWillMount() {
     // this.getTransactions();
-    this.loadMetamaskUserDetails();
+    // if(!window.listeningToMetamask) {
+    //   Web3.currentProvider.publicConfigStore.on('update', async newConfig => {
+    //     await this.getNetwork();
+    //     this.loadMetamaskUserDetails(this.state.network);
+    //   });
+    //   window.listeningToMetamask = true;
+    // }
+    this.getUserDetailsInterval = setInterval(async () => {
+      await this.getNetwork();
+      this.loadMetamaskUserDetails(this.state.network);
+    }, 1000)
     try {
       //we need this to pull the user details
       await this.getNetwork();
-
-      // we need the prices and the user details before doing anything
-      await Promise.all([this.loadMetamaskUserDetails(this.state.network), this.getCurrentBlockNumber()]);
-      // do{
-      //   await this.checkAddressAllowed();
-      // }while(!this.state.user.userName)
-      // await this.getTransactions();
+      await this.loadMetamaskUserDetails(this.state.network);
     } catch (err) {
       console.log(err);
     }
+  }
+
+  dismissMessages = (callback) => {
+    this.setState({
+      showFail: false,
+      showSuccess: false
+    }, callback)
   }
 
   async getNetwork() {
@@ -90,8 +101,19 @@ class BlockchainInfo extends React.Component {
   }
 
 
-  withdraw(contractAddress) {
-    return Core.withdraw(contractAddress, this.state.user.userName, this.state.network, this.getTransactions);
+  async withdraw(contractAddress) {
+    this.setState({loading: {...this.state.loading, transaction: true}});
+    let transactionStatus = null;
+    try {
+      transactionStatus = await Core.withdraw(contractAddress, this.state.user.userName, this.state.network);
+    } catch(e) {
+      console.warn(e)
+    }
+    this.setState({
+      loading: {...this.state.loading, transaction: false},
+      showSuccess: transactionStatus === true,
+      showFail: transactionStatus === false
+    }, this.loadMetamaskUserDetails);
   }
 
   async getTransactions() {
@@ -100,7 +122,6 @@ class BlockchainInfo extends React.Component {
       const userAddress = this.state.user.userName;
       // const receivedTransactionsTmp = [];
       const transactions = [];
-      console.log(response);
       await response.forEach(async (transaction) => {
         if (transaction.returnValues._sender === userAddress) {
           var transactionBlock = await this.getBlock(transaction.blockNumber);
@@ -126,12 +147,15 @@ class BlockchainInfo extends React.Component {
   }
 
   async loadMetamaskUserDetails() {
+    // this.setState({
+    //   loading: { ...this.state.loading, user: true },
+    // });
     await Core.loadMetamaskUserDetails(this.state.network)
       .then((response) => {
         this.setState({
           user: response,
           loading: { ...this.state.loading, user: false },
-        }, this.getTransactions);
+        });
       })
       .catch((err) => {
         setTimeout(this.loadMetamaskUserDetails, 1000);
