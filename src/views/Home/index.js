@@ -91,6 +91,16 @@ class HomeView extends Component {
                         <img style={{maxWidth: '100%'}} src="https://raw.githubusercontent.com/MetaMask/faq/master/images/download-metamask.png" alt="download MetaMask"/>
                     </a>
                 </Modal>
+                <Modal
+                    title="Wrong network"
+                    closable={false}
+                    visible={blockchain.network && blockchain.network !== 'ropsten'}
+                    onOk={() => {}}
+                    onCancel={() => {}}
+                    footer={null}
+                    >
+                    Please switch to Ropsten Test Network in order to use MyBit Faucet.
+                </Modal>
                 <StyledFormContainer>
                     <form>
                         <ConnectionStatus network={blockchain.network} />

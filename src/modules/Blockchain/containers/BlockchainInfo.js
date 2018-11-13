@@ -61,7 +61,7 @@ class BlockchainInfo extends React.Component {
   dismissMessages = (callback) => {
     this.setState({
       showFail: false,
-      showSuccess: false
+      showSuccess: false,
     }, callback)
   }
 
