@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import dayjs from 'dayjs'
-import { message, Modal, Spin } from 'antd';
-import 'antd/lib/message/style/css'
+import { notification, Modal, Spin } from 'antd';
+import 'antd/lib/notification/style/css'
 import 'antd/lib/modal/style/css'
 import ConnectionStatus from '@bit/mybit.ui.kit.connection-status';
 import Button from '@bit/mybit.ui.kit.button';
@@ -64,12 +64,20 @@ class HomeView extends Component {
         const { blockchain } = this.props;
         if(blockchain.showSuccess === true) {
             blockchain.dismissMessages(() => {
-                message.success('Your transaction was successfull.')
+                notification.success({
+                    message: 'Success',
+                    description: 'Your transaction was successfull.',
+                    duration: 0
+                  })
             })
         }
         if(blockchain.showFail === true) {
             blockchain.dismissMessages(() => {
-                message.error('Your transaction failed.')
+                notification.error({
+                    message: 'Warning',
+                    description: 'Your transaction failed.',
+                    duration: 0
+                  })
             })
         }
     }
@@ -121,7 +129,7 @@ class HomeView extends Component {
                                     <React.Fragment>
                                         <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${10000 - blockchain.user.myBitBalance} MYB`}</Button>
                                         <br/>
-                                        If you have less than 10 000 MYB tokens, the faucet will send you enough to reach it.
+                                        If you have less than 10 000 MYB tokens, the faucet will send you the difference.
                                     </React.Fragment>
                                 }
                                 {blockchain.user.myBitBalance >= 10000 && 
