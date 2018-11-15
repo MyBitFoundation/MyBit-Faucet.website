@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@bit/mybit.ui.kit.account-info": "^0.1.5",
+    "@bit/mybit.ui.kit.account-info": "^0.1.8",
     "@bit/mybit.ui.kit.button": "^0.1.7",
     "@bit/mybit.ui.kit.connection-status": "^0.1.5",
     "@bit/mybit.ui.kit.input": "^0.1.5",

@@ -832,21 +832,21 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@bit/mybit.ui.kit.account-info@^0.1.5":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.account-info/-/mybit.ui.kit.account-info-0.1.7.tgz#5c12fc25c255eebb25ec3bc9f1683db3134caacb"
-  integrity sha1-XBL8JcJV7rsl7DvJ8Wg9sxNMqss=
+"@bit/mybit.ui.kit.account-info@^0.1.8":
+  version "0.1.8"
+  resolved "https://node.bitsrc.io/mybit.ui.kit.account-info/-/mybit.ui.kit.account-info-0.1.8.tgz#b1baa9bd454ac78315a64d41e34b2d21dfcc1fa8"
+  integrity sha1-sbqpvUVKx4MVpk1B40stId/MH6g=
   dependencies:
-    "@bit/mybit.ui.kit.address" "0.1.7"
+    "@bit/mybit.ui.kit.address" "0.1.8"
     antd "^3.10.0"
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.address@0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.address/-/mybit.ui.kit.address-0.1.7.tgz#565984387181bcfd1786336004c5728d87d83d22"
-  integrity sha1-VlmEOHGBvP0XhjNgBMVyjYfYPSI=
+"@bit/mybit.ui.kit.address@0.1.8":
+  version "0.1.8"
+  resolved "https://node.bitsrc.io/mybit.ui.kit.address/-/mybit.ui.kit.address-0.1.8.tgz#0895807b203dc6c80e901e9fce9c4edbf994a746"
+  integrity sha1-CJWAeyA9xsgOkB6fzpxO2/mUp0Y=
   dependencies:
     antd "^3.10.0"
     prop-types "15.6.2"
