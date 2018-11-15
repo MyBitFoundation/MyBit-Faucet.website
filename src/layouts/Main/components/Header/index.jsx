@@ -18,7 +18,7 @@ const Header = (props) => (
                 <AccountInfo 
                     myBitBalance={user.myBitBalance} 
                     ethBalance={user.ethBalance} 
-                    userName={user.userName ? user.userName.slice(0, 5) + '...' + user.userName.slice(-5) : null}
+                    userName={user.userName ? user.userName : null}
                 />
                 </StyledHeader>
             </header>
