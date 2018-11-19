@@ -62,11 +62,11 @@ class HomeView extends Component {
     }
     componentDidUpdate() {
         const { blockchain } = this.props;
-        if(blockchain.showSuccess === true) {
+        if(blockchain.showSuccess && blockchain.showSuccess.status === true) {
             blockchain.dismissMessages(() => {
                 notification.success({
-                    message: 'Success',
-                    description: 'Your transaction was successfull.',
+                    message: 'Transaction successful',
+                    description: 'Received ' + (blockchain.showSuccess.events.LogWithdraw.returnValues._amountMYB / 1000000000000000000).toFixed(5) + ' MYB',
                     duration: 0
                   })
             })
@@ -74,8 +74,8 @@ class HomeView extends Component {
         if(blockchain.showFail === true) {
             blockchain.dismissMessages(() => {
                 notification.error({
-                    message: 'Warning',
-                    description: 'Your transaction failed.',
+                    message: 'Transaction failed',
+                    description: 'Something went wrong. Please try again.',
                     duration: 0
                   })
             })
@@ -127,7 +127,7 @@ class HomeView extends Component {
                             <div style={{textAlign: 'center'}}>
                                 {blockchain.user.myBitBalance < 10000 &&
                                     <React.Fragment>
-                                        <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${10000 - blockchain.user.myBitBalance} MYB`}</Button>
+                                        <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${(10000 - blockchain.user.myBitBalance).toFixed(5)} MYB`}</Button>
                                         <br/>
                                         If you have less than 10 000 MYB tokens, the faucet will send you the difference.
                                     </React.Fragment>
