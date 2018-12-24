@@ -136,6 +136,8 @@ class HomeView extends Component {
                                 }
                                 {blockchain.user.myBitBalance >= 10000 && 
                                         <React.Fragment>
+                                        Remember to add the MYB ropsten token to Metamask to see your tokens.<br/><br/> <code>0xbb07c8c6e7CD15E2E6F944a5C2CAC056c5476151</code>
+                                        <br/><br/>
                                             You need to have less than 10 000 MYB tokens in order to use the faucet.
                                         </React.Fragment>
                                 }
