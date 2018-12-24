@@ -18,7 +18,7 @@ const StyledFormContainer = styled.div`
         color: #333;
         display: flex;
         flex-direction: column;
-        max-width: 400px;
+        max-width: 470px;
         min-width: 320px;
         width: 100%;
         min-height: 500px;
@@ -129,6 +129,8 @@ class HomeView extends Component {
                                     <React.Fragment>
                                         <Button size="large" type="solid" onClick={e => blockchain.withdraw()}>{`Withdraw ${(10000 - blockchain.user.myBitBalance).toFixed(5)} MYB`}</Button>
                                         <br/>
+                                        Remember to add the MYB ropsten token to Metamask to see your tokens.<br/><br/> <code>0xbb07c8c6e7CD15E2E6F944a5C2CAC056c5476151</code>
+                                        <br/><br/>
                                         If you have less than 10 000 MYB tokens, the faucet will send you the difference.
                                     </React.Fragment>
                                 }
