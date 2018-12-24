@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Menu } from '@mybit/ui';
-import Menu from '@bit/mybit.ui.kit.menu';
+import Menu from '@bit/mybit.ui.showcase.menu';
 import { Header, Footer, Background } from './components';
 
 const MainLayout = (props) => {

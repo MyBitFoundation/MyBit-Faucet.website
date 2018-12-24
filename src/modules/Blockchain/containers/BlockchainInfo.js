@@ -103,7 +103,7 @@ class BlockchainInfo extends React.Component {
 
   async withdraw(contractAddress) {
     this.setState({loading: {...this.state.loading, transaction: true}});
-    let transactionReceipt = null;
+    let transactionReceipt = {};
     try {
       transactionReceipt = await Core.withdraw(contractAddress, this.state.user.userName, this.state.network);
     } catch(e) {

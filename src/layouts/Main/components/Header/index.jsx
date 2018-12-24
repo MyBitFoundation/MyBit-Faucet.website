@@ -1,6 +1,6 @@
 import React from 'react';
 // import { AccountInfo } from '@mybit/ui';
-import AccountInfo from '@bit/mybit.ui.kit.account-info';
+import AccountInfo from '@bit/mybit.ui.showcase.account-info';
 import StyledHeader from './styledHeader';
 import { myBitLogoWhite } from '../../../../modules/Images';
 import BlockchainContext from '../../../../modules/Blockchain/containers/BlockchainInfoContext';

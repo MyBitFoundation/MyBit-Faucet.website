@@ -3,8 +3,8 @@ import dayjs from 'dayjs'
 import { notification, Modal, Spin } from 'antd';
 import 'antd/lib/notification/style/css'
 import 'antd/lib/modal/style/css'
-import ConnectionStatus from '@bit/mybit.ui.kit.connection-status';
-import Button from '@bit/mybit.ui.kit.button';
+import ConnectionStatus from '@bit/mybit.ui.showcase.connection-status';
+import Button from '@bit/mybit.ui.showcase.button';
 import styled from 'styled-components';
 import { MainLayout } from '../../layouts/index.js';
 import { secureGraphic } from '../../modules/Images';
@@ -32,7 +32,7 @@ class HomeViewContainer extends Component {
         return (
             <BlockchainContext.Consumer>
                 {blockchain => <HomeView blockchain={blockchain}/>}
-            </ BlockchainContext.Consumer>
+            </BlockchainContext.Consumer>
         )
     }
 }
@@ -83,7 +83,7 @@ class HomeView extends Component {
     }
 
     render() {
-        const { blockchain} = this.props
+        const { blockchain } = this.props
         const isLoading = Object.keys(blockchain.loading).filter(key => blockchain.loading[key]).length > 0;
         return (
             <MainLayout>

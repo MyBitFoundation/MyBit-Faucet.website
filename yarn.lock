@@ -832,21 +832,21 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@bit/mybit.ui.kit.account-info@^0.1.8":
-  version "0.1.8"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.account-info/-/mybit.ui.kit.account-info-0.1.8.tgz#b1baa9bd454ac78315a64d41e34b2d21dfcc1fa8"
-  integrity sha1-sbqpvUVKx4MVpk1B40stId/MH6g=
+"@bit/mybit.ui.showcase.account-info@^0.1.8":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.account-info/-/mybit.ui.showcase.account-info-0.0.1.tgz#1fbf068654cf80e5e9c833c06d0c686fc4643a98"
+  integrity sha1-H78GhlTPgOXpyDPAbQxob8RkOpg=
   dependencies:
-    "@bit/mybit.ui.kit.address" "0.1.8"
+    "@bit/mybit.ui.showcase.address" "0.0.1"
     antd "^3.10.0"
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.address@0.1.8":
-  version "0.1.8"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.address/-/mybit.ui.kit.address-0.1.8.tgz#0895807b203dc6c80e901e9fce9c4edbf994a746"
-  integrity sha1-CJWAeyA9xsgOkB6fzpxO2/mUp0Y=
+"@bit/mybit.ui.showcase.address@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.address/-/mybit.ui.showcase.address-0.0.1.tgz#ad83b256ae6a2b495055269dd868e84b70bc98fa"
+  integrity sha1-rYOyVq5qK0lQVSad2GjoS3C8mPo=
   dependencies:
     antd "^3.10.0"
     prop-types "15.6.2"
@@ -854,95 +854,95 @@
     react-jazzicon "^0.1.3"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.button@^0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.button/-/mybit.ui.kit.button-0.1.7.tgz#3057f86b8bceb5af4fab3c76770ca7d171640f07"
-  integrity sha1-MFf4a4vOta9Pqzx2dwyn0XFkDwc=
+"@bit/mybit.ui.showcase.button@^0.1.7":
+  version "0.0.3"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.button/-/mybit.ui.showcase.button-0.0.3.tgz#6bce736f523c4ae7a14fccae1feebf7eb795542e"
+  integrity sha1-a85zb1I8SuehT8yuH+6/freVVC4=
   dependencies:
-    "@bit/mybit.ui.kit.theme" "0.1.6"
+    "@bit/mybit.ui.showcase.theme" "0.0.1"
     antd "^3.10.0"
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.connection-status@^0.1.5":
-  version "0.1.5"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.connection-status/-/mybit.ui.kit.connection-status-0.1.5.tgz#faf165c0d4a7d4a81c114924eb5e2c0057ae9f09"
-  integrity sha1-+vFlwNSn1KgcEUkk614sAFeunwk=
+"@bit/mybit.ui.showcase.connection-status@^0.1.5":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.connection-status/-/mybit.ui.showcase.connection-status-0.0.1.tgz#b1eca9335dcec5b132d8531922b8c40d57640c78"
+  integrity sha1-seypM13OxbEy2FMZIrjEDVdkDHg=
   dependencies:
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.icon@0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.icon/-/mybit.ui.kit.icon-0.1.7.tgz#ea6b3b52891fa1432705ba408aa1dfa08bbb0b9e"
-  integrity sha1-6ms7UokfoUMnBbpAiqHfoIu7C54=
+"@bit/mybit.ui.showcase.icon@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.icon/-/mybit.ui.showcase.icon-0.0.1.tgz#ab1270bb5e79cb98c48f8e56b625149c3b2733cf"
+  integrity sha1-qxJwu155y5jEj45WtiUUnDsnM88=
   dependencies:
     antd "^3.10.0"
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.img@0.1.5":
-  version "0.1.5"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.img/-/mybit.ui.kit.img-0.1.5.tgz#83913bfea7595b31a4dcb44040c640017b8e5b23"
-  integrity sha1-g5E7/qdZWzGk3LRAQMZAAXuOWyM=
+"@bit/mybit.ui.showcase.img@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.img/-/mybit.ui.showcase.img-0.0.1.tgz#a9749c357afada1f870ae7584872a7405d9bf3c0"
+  integrity sha1-qXScNXr62h+HCudYSHKnQF2b88A=
   dependencies:
     prop-types "15.6.2"
     react "^16.5.2"
 
-"@bit/mybit.ui.kit.input@^0.1.5":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.input/-/mybit.ui.kit.input-0.1.7.tgz#c8600fe6fad5faf4240a26211b4d24e050806298"
-  integrity sha1-yGAP5vrV+vQkCiYhG00k4FCAYpg=
+"@bit/mybit.ui.showcase.input@^0.1.5":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.input/-/mybit.ui.showcase.input-0.0.1.tgz#1d5b1e48b40e768d9061d185e3097a174acefc6d"
+  integrity sha1-HVseSLQOdo2QYdGF4wl6F0rO/G0=
   dependencies:
-    "@bit/mybit.ui.kit.img" "0.1.5"
-    "@bit/mybit.ui.kit.tooltip" "0.1.7"
-    antd "^3.10.0"
-    prop-types "15.6.2"
-    react "^16.5.2"
-    styled-components "^4.0.0-beta.10"
-
-"@bit/mybit.ui.kit.menu-item@0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.menu-item/-/mybit.ui.kit.menu-item-0.1.7.tgz#1a63f257cb3c857f51456ec7d52046209291f820"
-  integrity sha1-GmPyV8s8hX9RRW7H1SBGIJKR+CA=
-  dependencies:
-    antd "^3.10.0"
-    styled-components "^4.0.0-beta.10"
-
-"@bit/mybit.ui.kit.menu@^0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.menu/-/mybit.ui.kit.menu-0.1.7.tgz#ffb0f6af618fb89f8fe2723a1881ccbee46f3a3f"
-  integrity sha1-/7D2r2GPuJ+P4nI6GIHMvuRvOj8=
-  dependencies:
-    "@bit/mybit.ui.kit.icon" "0.1.7"
-    "@bit/mybit.ui.kit.menu-item" "0.1.7"
-    "@bit/mybit.ui.kit.sub-menu" "0.1.7"
-    "@bit/mybit.ui.kit.theme" "0.1.6"
+    "@bit/mybit.ui.showcase.img" "0.0.1"
+    "@bit/mybit.ui.showcase.tooltip" "0.0.1"
     antd "^3.10.0"
     prop-types "15.6.2"
     react "^16.5.2"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.sub-menu@0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.sub-menu/-/mybit.ui.kit.sub-menu-0.1.7.tgz#dd37adc1d9cd688339ed40718b74ef65d7b98708"
-  integrity sha1-3TetwdnNaIM57UBxi3TvZde5hwg=
+"@bit/mybit.ui.showcase.menu-item@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.menu-item/-/mybit.ui.showcase.menu-item-0.0.1.tgz#8e237dd5c7bb1b2691f3f74ff47aa1690738da2f"
+  integrity sha1-jiN91ce7GyaR8/dP9HqhaQc42i8=
   dependencies:
     antd "^3.10.0"
     styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.theme@0.1.6":
-  version "0.1.6"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.theme/-/mybit.ui.kit.theme-0.1.6.tgz#4d63dfe4dfa58b8733f4fc9dce319246af074d72"
-  integrity sha1-TWPf5N+li4cz9PydzjGSRq8HTXI=
+"@bit/mybit.ui.showcase.menu@^0.1.7":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.menu/-/mybit.ui.showcase.menu-0.0.1.tgz#5e5f18adc65a6a42c891e0785af91129b192e662"
+  integrity sha1-Xl8YrcZaakLIkeB4WvkRKbGS5mI=
+  dependencies:
+    "@bit/mybit.ui.showcase.icon" "0.0.1"
+    "@bit/mybit.ui.showcase.menu-item" "0.0.1"
+    "@bit/mybit.ui.showcase.sub-menu" "0.0.1"
+    "@bit/mybit.ui.showcase.theme" "0.0.1"
+    antd "^3.10.0"
+    prop-types "15.6.2"
+    react "^16.5.2"
+    styled-components "^4.0.0-beta.10"
 
-"@bit/mybit.ui.kit.tooltip@0.1.7":
-  version "0.1.7"
-  resolved "https://node.bitsrc.io/mybit.ui.kit.tooltip/-/mybit.ui.kit.tooltip-0.1.7.tgz#b71cb75624fd3df1bde0d63046041d443c949177"
-  integrity sha1-txy3ViT9PfG94NYwRgQdRDyUkXc=
+"@bit/mybit.ui.showcase.sub-menu@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.sub-menu/-/mybit.ui.showcase.sub-menu-0.0.1.tgz#9f6d3de0d0d6622eccda05b42f986dd868a68fe7"
+  integrity sha1-n2094NDWYi7M2gW0L5ht2Gimj+c=
+  dependencies:
+    antd "^3.10.0"
+    styled-components "^4.0.0-beta.10"
+
+"@bit/mybit.ui.showcase.theme@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.theme/-/mybit.ui.showcase.theme-0.0.1.tgz#a92df25e83623fecd949b1e7719a419e0e3c0303"
+  integrity sha1-qS3yXoNiP+zZSbHncZpBng48AwM=
+
+"@bit/mybit.ui.showcase.tooltip@0.0.1":
+  version "0.0.1"
+  resolved "https://node.bitsrc.io/mybit.ui.showcase.tooltip/-/mybit.ui.showcase.tooltip-0.0.1.tgz#c36aa14c13951b348a7b32a688f6f495a7a65cb9"
+  integrity sha1-w2qhTBOVGzSKezKmiPb0laemXLk=
   dependencies:
     antd "^3.10.0"
     prop-types "15.6.2"
